@@ -13,15 +13,15 @@
     }
 
     ::-webkit-scrollbar-track {
-        @apply bg-gray-200;
+        @apply bg-gray-100;
     }
 
     ::-webkit-scrollbar-thumb {
-        @apply bg-fuchsia-600;
+        @apply bg-blue-400;
     }
 
     ::-webkit-scrollbar-thumb:hover {
-        @apply bg-fuchsia-700;
+        @apply bg-blue-500;
     }
 
     textarea, input:focus {
@@ -39,15 +39,15 @@
 
 @layer components{
     .pi{
-        @apply p-2 mb-2 text-black bg-white rounded text-[0.9rem];
+        @apply p-3 mb-2 text-gray-800 bg-gray-50 border border-gray-200 rounded-lg text-[0.9rem] focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:bg-white transition-colors;
     }
 
     .profileInput{
-        @apply pi file:border-0 file:bg-fuchsia-500 file:text-white file:rounded-sm;
+        @apply pi file:border-0 file:bg-blue-500 file:text-white file:rounded-sm;
     }
 
     .flex-col-gap-2{
-        @apply flex flex-col gap-2;
+        @apply flex flex-col;
     }
 
     .flex-wrap-gap-2{
@@ -55,11 +55,11 @@
     }
 
     .other-input{
-        @apply p-2 mb-2 text-black bg-white rounded focus:placeholder-transparent;
+        @apply p-3 mb-2 text-gray-800 bg-gray-50 border border-gray-200 rounded-lg focus:placeholder-transparent focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:bg-white transition-colors;
     }
 
     .input-title{
-        @apply text-[1rem] text-white font-semibold;
+        @apply text-[1.1rem] text-slate-800 font-semibold mb-4 pb-2 border-b border-gray-200;
     }
 
     .f-col{
@@ -67,11 +67,15 @@
     }
 
     .grid-4{
-        @apply grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-4;
+        @apply grid grid-cols-[repeat(auto-fit,minmax(150px,1fr))] gap-3;
     }
 
     .editable{
         @apply hover:bg-gray-100 hover:cursor-text outline-none;
+    }
+
+    .form-card{
+        @apply bg-white rounded-lg shadow-sm border border-gray-200 p-4 transition-shadow duration-200 hover:shadow-md;
     }
 
 }
@@ -126,21 +130,35 @@
 
     @page {
         size: A4;
-        margin: 10mm;
+        /* 保留边距空间，但隐藏页眉页脚内容 */
+        margin-top: 15mm;
+        margin-bottom: 15mm;
+        margin-left: 10mm;
+        margin-right: 10mm;
+        
+        /* 隐藏浏览器默认的页眉页脚内容 */
+        @top-left { content: ""; }
+        @top-center { content: ""; }
+        @top-right { content: ""; }
+        @bottom-left { content: ""; }
+        @bottom-center { content: ""; }
+        @bottom-right { content: ""; }
+    }
+
+    /* 隐藏所有可能的页眉页脚元素 */
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    body {
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .preview {
         overflow-y: visible !important;
-    }
-
-    .preview::after {
-        content: "Created using https://atsresume.vercel.app/";
-        position: fixed;
-        bottom: 0;
-        right: 0;
-        opacity: 0.2;
-        font-size: small;
-        text-align: center;
-        z-index: -1;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 }

@@ -143,8 +143,8 @@ const Preview = () => {
       <A4PageWrapper>
         <HighlightMenu
           styles={{
-            borderColor: "#C026D3",
-            backgroundColor: "#C026D3",
+            borderColor: "#2563eb",
+            backgroundColor: "#2563eb",
             boxShadow: "0px 5px 5px 0px rgba(0, 0, 0, 0.15)",
             zIndex: 10,
             borderRadius: "5px",
@@ -200,7 +200,7 @@ const Preview = () => {
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="f-col items-center mb-1">
             {resumeData.profilePicture.length > 0 && (
-              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-fuchsia-700">
+              <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-blue-200">
                 <Image
                   src={resumeData.profilePicture}
                   alt="profile"
@@ -210,8 +210,8 @@ const Preview = () => {
                 />
               </div>
             )}
-            <h1 className="name">{resumeData.name}</h1>
-            <p className="profession">{resumeData.position}</p>
+            {resumeData.name && <h1 className="name">{resumeData.name}</h1>}
+            {resumeData.position && <p className="profession">{resumeData.position}</p>}
             <ContactInfo
               mainclass="flex flex-row gap-1 mb-1 contact"
               linkclass="inline-flex items-center gap-1"
@@ -222,32 +222,30 @@ const Preview = () => {
               emailicon={<MdEmail />}
               addressicon={<MdLocationOn />}
             />
-            <div className="grid grid-cols-3 gap-1">
-              {resumeData.socialMedia.map((socialMedia, index) => {
-                return (
-                  <a
-                    href={`http://${socialMedia.link}`}
-                    aria-label={socialMedia.socialMedia}
-                    key={index}
-                    title={socialMedia.socialMedia}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1 social-media align-center justify-center "
-                    // Prevent text overflowing, If the socialMedia.link string is longer than 32 characters, apply the wordWrap and display styles to this <a> tag.
-                    // wordWrap: "break-word" breaks the text onto the next line if it's too long,
-                    // display: "inline-block" is necessary for wordWrap to work on an inline element like <a>.
-                    
-                  >
-                    {icons.map((icon, index) => {
-                      if (icon.name === socialMedia.socialMedia.toLowerCase()) {
-                        return <span key={index}>{icon.icon}</span>;
-                      }
-                    })}
-                    {socialMedia.link}
-                  </a>
-                );
-              })}
-            </div>
+            {resumeData.socialMedia.length > 0 && (
+              <div className="grid grid-cols-3 gap-1">
+                {resumeData.socialMedia.map((socialMedia, index) => {
+                  // 获取平台类型，优先使用platform字段，否则根据socialMedia名称匹配
+                  const platform = socialMedia.platform || socialMedia.socialMedia.toLowerCase();
+                  const matchedIcon = icons.find(icon => icon.name === platform);
+                  
+                  return (
+                    <a
+                      href={`http://${socialMedia.link}`}
+                      aria-label={socialMedia.socialMedia}
+                      key={index}
+                      title={socialMedia.socialMedia}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1 social-media align-center justify-center "
+                    >
+                      {matchedIcon && <span>{matchedIcon.icon}</span>}
+                      {socialMedia.link}
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
           <hr className="border-dashed my-2" />
           {/* two column start */}
@@ -262,15 +260,15 @@ const Preview = () => {
                 </div>
               )}
               <div>
-                {resumeData.education.length > 0 && (
+                {resumeData.education.length > 0 && resumeData.education.some(item => item.degree || item.school) && (
                   <div className="mb-1">
                     <h2 className="section-title mb-1 border-b-2 border-gray-300">
                       Education
                     </h2>
                     {resumeData.education.map((item, index) => (
                       <div key={index} className="mb-1">
-                        <p className="content i-bold">{item.degree}</p>
-                        <p className="content">{item.school}</p>
+                        {item.degree && <p className="content i-bold">{item.degree}</p>}
+                        {item.school && <p className="content">{item.school}</p>}
                         <DateRange
                           startYear={item.startYear}
                           endYear={item.endYear}
@@ -317,7 +315,7 @@ const Preview = () => {
             </div>
             
             <div className="col-span-2 space-y-2">
-              {resumeData.workExperience.length > 0 && (
+              {resumeData.workExperience.length > 0 && resumeData.workExperience.some(item => item.company || item.position) && (
                 <Droppable droppableId="work-experience" type="WORK_EXPERIENCE">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -352,10 +350,12 @@ const Preview = () => {
                                   id={`work-experience-start-end-date`}
                                 />
                               </div>
-                              <p className="content">{item.position}</p>
-                              <p className="content hyphens-auto">
-                                {item.description}
-                              </p>
+                              {item.position && <p className="content">{item.position}</p>}
+                              {item.description && (
+                                <p className="content hyphens-auto">
+                                  {item.description}
+                                </p>
+                              )}
                               <Droppable
                                 droppableId={`WORK_EXPERIENCE_KEY_ACHIEVEMENT-${index}`}
                                 type="WORK_EXPERIENCE_KEY_ACHIEVEMENT"
@@ -410,7 +410,7 @@ const Preview = () => {
                   )}
                 </Droppable>
               )}
-              {resumeData.projects.length > 0 && (
+              {resumeData.projects.length > 0 && resumeData.projects.some(item => item.name || item.description) && (
                 <Droppable droppableId="projects" type="PROJECTS">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
@@ -446,15 +446,17 @@ const Preview = () => {
                                 />
                               </div>
                              
-                              <Link
-                                href={item.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="content"
-                              >
-                                {item.link}
-                              </Link>
-                              <p className="content">{item.description}</p>
+                              {item.link && (
+                                <Link
+                                  href={item.link}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="content"
+                                >
+                                  {item.link}
+                                </Link>
+                              )}
+                              {item.description && <p className="content">{item.description}</p>}
                               <Droppable
                                 droppableId={`PROJECTS_KEY_ACHIEVEMENT-${index}`}
                                 type="PROJECTS_KEY_ACHIEVEMENT"

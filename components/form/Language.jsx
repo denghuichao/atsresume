@@ -1,45 +1,93 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ResumeContext } from "../../pages/builder";
-import FormButton from "./FormButton";
+import { FaTimes, FaPlus } from "react-icons/fa";
 
 const Language = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
-  const skillType = "languages";
-  const title = "Languages";
-  const placeholder = "Language";
+  const [newLanguage, setNewLanguage] = useState("");
 
-  const handleSkills = (e, index, skillType) => {
-    const newSkills = [...resumeData[skillType]];
-    newSkills[index] = e.target.value;
-    setResumeData({ ...resumeData, [skillType]: newSkills });
+  // 语言标签颜色配置
+  const colors = {
+    bg: "bg-orange-100",
+    text: "text-orange-800",
+    border: "border-orange-200",
+    hover: "hover:bg-orange-200"
   };
 
-  const addSkill = () => {
-    setResumeData({ ...resumeData, [skillType]: [...resumeData[skillType], ""] });
+  // 添加语言
+  const addLanguage = () => {
+    if (newLanguage.trim()) {
+      setResumeData({
+        ...resumeData,
+        languages: [...resumeData.languages, newLanguage.trim()]
+      });
+      setNewLanguage("");
+    }
   };
 
-  const removeSkill = (index) => {
-    const newSkills = [...resumeData[skillType]];
-    newSkills.splice(-1, 1);
-    setResumeData({ ...resumeData, [skillType]: newSkills });
-  };  
+  // 删除语言
+  const removeLanguage = (indexToRemove) => {
+    const newLanguages = resumeData.languages.filter((_, index) => index !== indexToRemove);
+    setResumeData({ ...resumeData, languages: newLanguages });
+  };
+
+  // 处理回车键添加
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addLanguage();
+    }
+  };
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">{title}</h2>
-      {resumeData[skillType].map((skill, index) => (
-        <div key={index} className="f-col">
+      <h2 className="input-title">Languages</h2>
+      
+      {/* 语言标签展示区域 */}
+      <div className="flex flex-wrap gap-2 mb-4">
+        {resumeData.languages.map((language, index) => (
+          <div
+            key={index}
+            className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-sm font-medium ${colors.bg} ${colors.text} ${colors.border} border transition-colors`}
+          >
+            <span>{language}</span>
+            <button
+              type="button"
+              onClick={() => removeLanguage(index)}
+              className={`${colors.hover} rounded-full p-1 transition-colors`}
+              aria-label={`Remove ${language}`}
+            >
+              <FaTimes className="w-3 h-3" />
+            </button>
+          </div>
+        ))}
+      </div>
+
+      {/* 添加新语言输入框 */}
+      <div className="space-y-2">
+        <p className="text-xs text-gray-500">
+          Add languages you can speak, read, or write. You can optionally include proficiency level.
+        </p>
+        <div className="flex gap-2">
           <input
             type="text"
-            placeholder={placeholder}
-            name="skill"
-            className="w-full other-input"
-            value={skill}
-            onChange={(e) => handleSkills(e, index, skillType)}
+            placeholder="e.g., English (Native), Spanish (Fluent), Mandarin (Conversational)"
+            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:border-blue-300 focus:ring-1 focus:ring-blue-300 focus:outline-none"
+            value={newLanguage}
+            onChange={(e) => setNewLanguage(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
+          <button
+            type="button"
+            onClick={addLanguage}
+            disabled={!newLanguage.trim()}
+            className={`px-4 py-2 ${colors.bg} ${colors.text} rounded-lg border ${colors.border} ${colors.hover} disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2`}
+          >
+            <FaPlus className="w-3 h-3" />
+            <span>Add</span>
+          </button>
         </div>
-      ))}
-      <FormButton size={resumeData[skillType].length} add={addSkill} remove={removeSkill} />
+      </div>
     </div>
   );
 };

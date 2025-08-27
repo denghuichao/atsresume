@@ -1,9 +1,12 @@
 import Head from "next/head";
 
 export default function Meta({ title, keywords, description }) {
-    const homepage = "https://atsresume.vercel.app/";
-    const logo = "https://atsresume.vercel.app/assets/logo.png";
-    const fevicon = "https://atsresume.vercel.app/assets/favicon.ico";
+    const homepage = "https://atsresume.top/";
+    const logo = "https://atsresume.top/assets/logo.png";
+    const favicon = "/assets/favicon.ico";
+    const faviconSvg = "/favicon.svg";
+    const favicon32 = "/favicon-32x32.png";
+    const favicon16 = "/favicon-16x16.png";
 
     function isiteJsonLd() {
         return {
@@ -19,7 +22,7 @@ export default function Meta({ title, keywords, description }) {
                 },
                 "image": ${logo},
                 "description": ${description},
-                "founder": "Saurav Hathi",
+                "founder": "InterviewPilot AI",
                 "foundingDate": "2023",
                 "foundingLocation": "IN",
                 "email": "xyz@gmail.com",
@@ -29,8 +32,8 @@ export default function Meta({ title, keywords, description }) {
                 "mainEntityOfPage": ${homepage},
                 "knowsAbout": ${keywords},
                 "knowsLanguage": "English",
-                "memberOf": "Saurav Hathi",
-                "owns": "Saurav Hathi",
+                "memberOf": "InterviewPilot AI",
+                "owns": "InterviewPilot AI",
                 "publishingPrinciples": ${homepage},
                 "slogan": "Get hired with an ATS-optimized resume"
             }`
@@ -44,10 +47,19 @@ export default function Meta({ title, keywords, description }) {
             <meta name="keywords" content={keywords} />
             <meta name="description" content={description} />
             <meta charSet="utf-8" />
-            <link rel="icon" href={fevicon} />
+            
+            {/* Favicon - Multiple formats for better browser support */}
+            <link rel="icon" type="image/svg+xml" href={faviconSvg} />
+            <link rel="icon" type="image/png" sizes="32x32" href={favicon32} />
+            <link rel="icon" type="image/png" sizes="16x16" href={favicon16} />
+            <link rel="shortcut icon" href={favicon} />
+            <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+            <link rel="manifest" href="/site.webmanifest" />
+            <meta name="theme-color" content="#3B82F6" />
+            
             <title>{title}</title>
             <meta type="copyright" content="ATSResume" />
-            <meta type="author" content="Saurav Hathi" />
+            <meta type="author" content="InterviewPilot AI" />
             {/* Open Graph */}
             <meta property="og:type" content="website" />
             <meta property="og:url" content={homepage} />

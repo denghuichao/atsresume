@@ -1,23 +1,36 @@
 import React, {  } from "react";
 
 const ContactInfo = ({ mainclass, linkclass, teldata, emaildata, addressdata, telicon, emailicon, addressicon }) => {
+    // 检查是否有任何联系信息
+    const hasAnyContact = teldata || emaildata || addressdata;
+    
+    if (!hasAnyContact) {
+      return null;
+    }
+
     return (
       <div className={mainclass}>
-        <a className={linkclass}
-          aria-label="Phone Number"
-          href={`tel:${teldata}`}>
-          {telicon}  {teldata}
-        </a>
-        <a className={linkclass}
-          aria-label="Email Address"
-          href={`mailto:${emaildata}`}>
-          {emailicon} {emaildata}
-        </a>
-        <address
-          aria-label="Address"
-          className={linkclass + " not-italic"} >
-          {addressicon} {addressdata}
-        </address>
+        {teldata && (
+          <a className={linkclass}
+            aria-label="Phone Number"
+            href={`tel:${teldata}`}>
+            {telicon}  {teldata}
+          </a>
+        )}
+        {emaildata && (
+          <a className={linkclass}
+            aria-label="Email Address"
+            href={`mailto:${emaildata}`}>
+            {emailicon} {emaildata}
+          </a>
+        )}
+        {addressdata && (
+          <address
+            aria-label="Address"
+            className={linkclass + " not-italic"} >
+            {addressicon} {addressdata}
+          </address>
+        )}
       </div>
     );
   }

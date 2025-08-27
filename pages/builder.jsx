@@ -33,14 +33,35 @@ export default function Builder(props) {
   const handleProfilePicture = (e) => {
     const file = e.target.files[0];
 
-    if (file instanceof Blob) {
+    if (file && file instanceof Blob) {
       const reader = new FileReader();
       reader.onload = (event) => {
-        setResumeData({ ...resumeData, profilePicture: event.target.result });
+        setResumeData({ 
+          ...resumeData, 
+          profilePicture: event.target.result,
+          profilePictureName: file.name
+        });
       };
       reader.readAsDataURL(file);
-    } else {
+    } else if (file) {
       console.error("Invalid file type");
+    }
+    // 如果没有选择文件 (file 为 undefined)，什么都不做
+  };
+
+  // remove profile picture
+  const removeProfilePicture = () => {
+    // 清空 resumeData 中的头像数据
+    setResumeData({ 
+      ...resumeData, 
+      profilePicture: "",
+      profilePictureName: ""
+    });
+    
+    // 清空文件输入框的值
+    const fileInput = document.querySelector('input[name="profileImage"]');
+    if (fileInput) {
+      fileInput.value = "";
     }
   };
 
@@ -56,6 +77,7 @@ export default function Builder(props) {
           resumeData,
           setResumeData,
           handleProfilePicture,
+          removeProfilePicture,
           handleChange,
         }}
       >
@@ -66,24 +88,43 @@ export default function Builder(props) {
         />
         <div className="f-col gap-4 md:flex-row justify-evenly max-w-7xl md:mx-auto md:h-screen">
           {!formClose && (
-            <form className="p-4 bg-fuchsia-600 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll">
-              <LoadUnload/>
-              <PersonalInformation />
-              <SocialMedia />
-              <Summary />
-              <Education />
-              <WorkExperience />
-              <Projects />
+            <form className="p-6 bg-gray-50 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll border-r border-gray-200 space-y-6">
+              <div className="form-card">
+                <LoadUnload/>
+              </div>
+              <div className="form-card">
+                <PersonalInformation />
+              </div>
+              <div className="form-card">
+                <SocialMedia />
+              </div>
+              <div className="form-card">
+                <Summary />
+              </div>
+              <div className="form-card">
+                <Education />
+              </div>
+              <div className="form-card">
+                <WorkExperience />
+              </div>
+              <div className="form-card">
+                <Projects />
+              </div>
               {
                 resumeData.skills.map((skill, index) => (
-                  <Skill
-                    title={skill.title}
-                    key={index}
-                  />
+                  <div key={index} className="form-card">
+                    <Skill
+                      title={skill.title}
+                    />
+                  </div>
                 ))
               }
-              <Language />
-              <Certification />
+              <div className="form-card">
+                <Language />
+              </div>
+              <div className="form-card">
+                <Certification />
+              </div>
             </form>
           )}
           <Preview />

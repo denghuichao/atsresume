@@ -5,18 +5,22 @@ const DefaultResumeData = {
   email: "beddylea@gmail.com",
   address: "San Francisco, CA",
   profilePicture: "",
+  profilePictureName: "",
   socialMedia: [
     {
       socialMedia: "Github",
-      link: "github.com//bedivere-lea",
+      link: "github.com/bedivere-lea",
+      platform: "github"
     },
     {
       socialMedia: "LinkedIn",
       link: "linkedin.com/in/bedivere-lea",
+      platform: "linkedin"
     },
     {
       socialMedia: "Website",
       link: "bedivere-lea.github.io",
+      platform: "website"
     },
   ],
   summary: "Resourceful Developer with 11 years of experience in designing and developing user interfaces, testing and training employees. Skilled at utilizing a wide variety of tools and programs to provide effective applications.",

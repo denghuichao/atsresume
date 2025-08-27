@@ -4,7 +4,7 @@ A cutting-edge resume builder that helps job seekers create a professional, ATS-
 
 ## Demo
 
-#### [https://atsresume.vercel.app/](https://atsresume.vercel.app/)
+#### [https://atsresume.top/](https://atsresume.top/)
 ![image](https://user-images.githubusercontent.com/61316762/218017511-fbbaa7da-6154-449f-9e46-8de45b0e6c29.png)
 
 ### Resume Score
@@ -109,7 +109,7 @@ Key achievements are the most important part of your resume.
 
 ## License
 
-[MIT](https://github.com/sauravhathi/atsresume/blob/main/LICENSE.md)
+[MIT](https://github.com/denghuichao/atsresume/blob/main/LICENSE.md)
 
 ## Contributing
 
@@ -119,4 +119,4 @@ Please make sure to update tests as appropriate.
 
 ## Authors and acknowledgment
 
-- [Saurav Hathi](https://github.com/sauravhathi)
+- [InterviewPilot AI](https://github.com/denghuichao)

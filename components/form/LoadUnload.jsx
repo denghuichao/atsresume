@@ -28,37 +28,40 @@ const LoadUnload = () => {
   };
 
   return (
-    <div className="flex flex-wrap gap-4 mb-2 justify-center">
-      <div className="inline-flex flex-row items-center gap-2">
-        <h2 className="text-[1.2rem] text-white">Load Data</h2>
-        <label className="p-2 text-white bg-fuchsia-700 rounded cursor-pointer">
-          <FaCloudUploadAlt className="text-[1.2rem] text-white" />
-          <input
-            aria-label="Load Data"
-            type="file"
-            className="hidden"
-            onChange={handleLoad}
-            accept=".json"
-          />
-        </label>
+    <>
+      <h2 className="input-title">Data Management</h2>
+      <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex-1">
+          <label className="flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg cursor-pointer transition-all duration-200 shadow-md hover:shadow-lg border border-blue-600 hover:border-blue-700">
+            <FaCloudUploadAlt className="text-lg" />
+            <span className="font-medium">Load Data</span>
+            <input
+              aria-label="Load Data"
+              type="file"
+              className="hidden"
+              onChange={handleLoad}
+              accept=".json"
+            />
+          </label>
+        </div>
+        <div className="flex-1">
+          <button
+            aria-label="Save Data"
+            className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-green-600 hover:bg-green-700 text-white rounded-lg transition-all duration-200 shadow-md hover:shadow-lg border border-green-600 hover:border-green-700"
+            onClick={(event) =>
+              handleDownload(
+                resumeData,
+                resumeData.name + " by ATSResume.json",
+                event
+              )
+            }
+          >
+            <FaCloudDownloadAlt className="text-lg" />
+            <span className="font-medium">Save Data</span>
+          </button>
+        </div>
       </div>
-      <div className="inline-flex flex-row items-center gap-2">
-        <h2 className="text-[1.2rem] text-white">Save Data</h2>
-        <button
-          aria-label="Save Data"
-          className="p-2 text-white bg-fuchsia-700 rounded"
-          onClick={(event) =>
-            handleDownload(
-              resumeData,
-              resumeData.name + " by ATSResume.json",
-              event
-            )
-          }
-        >
-          <FaCloudDownloadAlt className="text-[1.2rem] text-white" />
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 

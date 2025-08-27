@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favicon Generator for ATS Resume</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .icon-preview { margin: 20px 0; }
+        .icon { margin: 10px; display: inline-block; }
+        canvas { border: 1px solid #ccc; margin: 5px; }
+    </style>
+</head>
+<body>
+    <h1>ATS Resume Favicon Generator</h1>
+    <p>This page generates favicon images for the ATS Resume project.</p>
+    
+    <div class="icon-preview">
+        <h3>16x16 Favicon</h3>
+        <canvas id="favicon16" width="16" height="16"></canvas>
+        <button onclick="downloadCanvas('favicon16', 'favicon-16x16.png')">Download 16x16 PNG</button>
+    </div>
+    
+    <div class="icon-preview">
+        <h3>32x32 Favicon</h3>
+        <canvas id="favicon32" width="32" height="32"></canvas>
+        <button onclick="downloadCanvas('favicon32', 'favicon-32x32.png')">Download 32x32 PNG</button>
+    </div>
+    
+    <div class="icon-preview">
+        <h3>180x180 Apple Touch Icon</h3>
+        <canvas id="apple180" width="180" height="180"></canvas>
+        <button onclick="downloadCanvas('apple180', 'apple-touch-icon.png')">Download Apple Touch Icon</button>
+    </div>
+
+    <script>
+        function drawIcon(canvas, size) {
+            const ctx = canvas.getContext('2d');
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, size, size);
+            
+            // Create gradient background
+            const gradient = ctx.createLinearGradient(0, 0, size, size);
+            gradient.addColorStop(0, '#3B82F6');
+            gradient.addColorStop(1, '#1D4ED8');
+            
+            // Draw background with rounded corners
+            const cornerRadius = size * 0.15;
+            ctx.fillStyle = gradient;
+            roundRect(ctx, 0, 0, size, size, cornerRadius);
+            ctx.fill();
+            
+            // Draw document
+            const docWidth = size * 0.6;
+            const docHeight = size * 0.75;
+            const docX = size * 0.2;
+            const docY = size * 0.125;
+            const docRadius = size * 0.06;
+            
+            ctx.fillStyle = 'white';
+            roundRect(ctx, docX, docY, docWidth, docHeight, docRadius);
+            ctx.fill();
+            
+            // Draw text lines
+            const lineHeight = size * 0.06;
+            const lineSpacing = size * 0.12;
+            const startY = docY + size * 0.15;
+            
+            ctx.fillStyle = '#3B82F6';
+            roundRect(ctx, docX + size * 0.08, startY, docWidth * 0.75, lineHeight, lineHeight/2);
+            ctx.fill();
+            
+            ctx.fillStyle = '#6B7280';
+            roundRect(ctx, docX + size * 0.08, startY + lineSpacing, docWidth * 0.5, lineHeight, lineHeight/2);
+            ctx.fill();
+            
+            roundRect(ctx, docX + size * 0.08, startY + lineSpacing * 2, docWidth * 0.65, lineHeight, lineHeight/2);
+            ctx.fill();
+            
+            if (size >= 32) {
+                roundRect(ctx, docX + size * 0.08, startY + lineSpacing * 3, docWidth * 0.55, lineHeight, lineHeight/2);
+                ctx.fill();
+            }
+            
+            // Draw checkmark circle
+            const checkSize = size * 0.25;
+            const checkX = size * 0.7;
+            const checkY = size * 0.7;
+            
+            ctx.fillStyle = '#10B981';
+            ctx.beginPath();
+            ctx.arc(checkX, checkY, checkSize/2, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Draw checkmark
+            const checkStroke = Math.max(1, size * 0.05);
+            ctx.strokeStyle = 'white';
+            ctx.lineWidth = checkStroke;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            ctx.beginPath();
+            ctx.moveTo(checkX - checkSize * 0.25, checkY);
+            ctx.lineTo(checkX - checkSize * 0.05, checkY + checkSize * 0.15);
+            ctx.lineTo(checkX + checkSize * 0.25, checkY - checkSize * 0.15);
+            ctx.stroke();
+        }
+        
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+        
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+        
+        // Generate all icons on page load
+        window.onload = function() {
+            drawIcon(document.getElementById('favicon16'), 16);
+            drawIcon(document.getElementById('favicon32'), 32);
+            drawIcon(document.getElementById('apple180'), 180);
+        };
+    </script>
+</body>
+</html>
