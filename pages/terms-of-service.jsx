@@ -42,7 +42,7 @@ const TermsOfService = () => {
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">1. Acceptance of Terms</h2>
                 <p className="text-gray-700 mb-4">
-                  By accessing and using ATSResumeBuilder ("the Service"), you accept and agree to be bound by the terms and provision of this agreement.
+                  By accessing and using ATSResumeBuilder (&quot;the Service&quot;), you accept and agree to be bound by the terms and provision of this agreement.
                 </p>
               </section>
 
@@ -87,7 +87,7 @@ const TermsOfService = () => {
               <section className="mb-8">
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">6. Disclaimer of Warranties</h2>
                 <p className="text-gray-700 mb-4">
-                  The service is provided "as is" without any warranties, expressed or implied. We do not guarantee that the service will be uninterrupted or error-free.
+                  The service is provided &quot;as is&quot; without any warranties, expressed or implied. We do not guarantee that the service will be uninterrupted or error-free.
                 </p>
               </section>
 
