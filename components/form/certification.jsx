@@ -6,7 +6,7 @@ const Certification = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [newCertification, setNewCertification] = useState("");
 
-  // 认证标签颜色配置
+  // Certification tag color configuration
   const colors = {
     bg: "bg-teal-100",
     text: "text-teal-800",
@@ -14,7 +14,7 @@ const Certification = () => {
     hover: "hover:bg-teal-200"
   };
 
-  // 添加认证
+  // Add certification
   const addCertification = () => {
     if (newCertification.trim()) {
       setResumeData({
@@ -25,13 +25,13 @@ const Certification = () => {
     }
   };
 
-  // 删除认证
+  // Remove certification
   const removeCertification = (indexToRemove) => {
     const newCertifications = resumeData.certifications.filter((_, index) => index !== indexToRemove);
     setResumeData({ ...resumeData, certifications: newCertifications });
   };
 
-  // 处理回车键添加
+  // Handle Enter key to add
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -43,7 +43,7 @@ const Certification = () => {
     <div className="flex-col-gap-2">
       <h2 className="input-title">Certifications</h2>
       
-      {/* 认证标签展示区域 */}
+      {/* Certifications tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">
         {resumeData.certifications.map((certification, index) => (
           <div
@@ -63,10 +63,10 @@ const Certification = () => {
         ))}
       </div>
 
-      {/* 添加新认证输入框 */}
+      {/* Add new certification input */}
       <div className="space-y-2">
         <p className="text-xs text-gray-500">
-          Include professional certifications, licenses, or credentials you've earned. Add the full name and issuing organization.
+          Include professional certifications, licenses, or credentials you&apos;ve earned. Add the full name and issuing organization.
         </p>
         <div className="flex gap-2">
           <input

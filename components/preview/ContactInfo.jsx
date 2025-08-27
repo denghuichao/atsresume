@@ -1,7 +1,7 @@
 import React, {  } from "react";
 
 const ContactInfo = ({ mainclass, linkclass, teldata, emaildata, addressdata, telicon, emailicon, addressicon }) => {
-    // 检查是否有任何联系信息
+    // Check if there is any contact information
     const hasAnyContact = teldata || emaildata || addressdata;
     
     if (!hasAnyContact) {

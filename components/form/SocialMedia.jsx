@@ -7,7 +7,7 @@ const SocialMedia = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [newUrl, setNewUrl] = useState("");
 
-  // 平台识别映射
+  // Platform recognition mapping
   const platformIcons = {
     github: { icon: <FaGithub />, name: "Github", color: "text-gray-700" },
     linkedin: { icon: <FaLinkedin />, name: "LinkedIn", color: "text-blue-600" },
@@ -18,7 +18,7 @@ const SocialMedia = () => {
     website: { icon: <CgWebsite />, name: "Website", color: "text-gray-600" },
   };
 
-  // 社交媒体标签颜色配置
+  // Social media tag color configuration
   const colors = {
     bg: "bg-indigo-100",
     text: "text-indigo-800",
@@ -26,7 +26,7 @@ const SocialMedia = () => {
     hover: "hover:bg-indigo-200"
   };
 
-  // 根据URL自动识别平台
+  // Auto-detect platform based on URL
   const detectPlatform = (url) => {
     if (!url) return "website";
     const cleanUrl = url.toLowerCase().replace(/(https?:\/\/)?(www\.)?/, "");
@@ -41,7 +41,7 @@ const SocialMedia = () => {
     return "website";
   };
 
-  // 添加社交媒体
+  // Add social media
   const addSocialMedia = () => {
     if (newUrl.trim()) {
       const platform = detectPlatform(newUrl);
@@ -61,13 +61,13 @@ const SocialMedia = () => {
     }
   };
 
-  // 删除社交媒体
+  // Remove social media
   const removeSocialMedia = (indexToRemove) => {
     const newSocialMedia = resumeData.socialMedia.filter((_, index) => index !== indexToRemove);
     setResumeData({ ...resumeData, socialMedia: newSocialMedia });
   };
 
-  // 处理回车键添加
+  // Handle Enter key to add
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -79,7 +79,7 @@ const SocialMedia = () => {
     <div className="flex-col-gap-2">
       <h2 className="input-title">Social Media</h2>
       
-      {/* 社交媒体标签展示区域 */}
+      {/* Social media tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">
         {resumeData.socialMedia.map((socialMedia, index) => {
           const platform = socialMedia.platform || detectPlatform(socialMedia.link);
@@ -94,12 +94,12 @@ const SocialMedia = () => {
                 {platformInfo.icon}
               </div>
               
-              {/* 显示完整链接，只在必要时省略 */}
+              {/* Display full link, truncate only when necessary */}
               <span className="text-sm truncate min-w-0 flex-1">
                 {socialMedia.link}
               </span>
               
-              {/* 删除按钮 */}
+              {/* Delete button */}
               <button
                 type="button"
                 onClick={() => removeSocialMedia(index)}
@@ -113,7 +113,7 @@ const SocialMedia = () => {
         })}
       </div>
 
-      {/* 添加新社交媒体输入框 */}
+      {/* Add new social media input */}
       <div className="space-y-2">
         <p className="text-xs text-gray-500">
           Enter the full URL of your professional social media profiles. The platform will be automatically detected.

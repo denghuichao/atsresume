@@ -20,8 +20,13 @@ import { ResumeContext } from "../../pages/builder";
 import dynamic from "next/dynamic";
 import Language from "./Language";
 import Certification from "./Certification";
-import { HighlightMenu } from "react-highlight-menu";
 import useKeyboardShortcut from "../../hooks/useKeyboardShortcut";
+
+// Dynamic import for HighlightMenu to avoid SSR issues
+const HighlightMenu = dynamic(
+  () => import("react-highlight-menu").then((mod) => mod.HighlightMenu),
+  { ssr: false }
+);
 
 const DragDropContext = dynamic(
   () =>
@@ -150,7 +155,7 @@ const Preview = () => {
             borderRadius: "5px",
             padding: "3px",
           }}
-          target="body"
+          target="#resume-preview"
           menu={() => (
             <>
               <MenuButton
@@ -225,7 +230,7 @@ const Preview = () => {
             {resumeData.socialMedia.length > 0 && (
               <div className="grid grid-cols-3 gap-1">
                 {resumeData.socialMedia.map((socialMedia, index) => {
-                  // 获取平台类型，优先使用platform字段，否则根据socialMedia名称匹配
+                  // Get platform type, prioritize platform field, otherwise match by socialMedia name
                   const platform = socialMedia.platform || socialMedia.socialMedia.toLowerCase();
                   const matchedIcon = icons.find(icon => icon.name === platform);
                   
@@ -533,7 +538,7 @@ const A4PageWrapper = ({ children }) => {
   };
 
   return (
-    <div className="w-8.5in" onLoad={alertA4Size}>
+    <div className="w-8.5in resume-preview-area" id="resume-preview" onLoad={alertA4Size}>
       {children}
     </div>
   );

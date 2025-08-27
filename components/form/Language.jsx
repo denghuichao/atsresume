@@ -6,7 +6,7 @@ const Language = () => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [newLanguage, setNewLanguage] = useState("");
 
-  // 语言标签颜色配置
+  // Language tag color configuration
   const colors = {
     bg: "bg-orange-100",
     text: "text-orange-800",
@@ -14,7 +14,7 @@ const Language = () => {
     hover: "hover:bg-orange-200"
   };
 
-  // 添加语言
+  // Add language
   const addLanguage = () => {
     if (newLanguage.trim()) {
       setResumeData({
@@ -25,13 +25,13 @@ const Language = () => {
     }
   };
 
-  // 删除语言
+  // Remove language
   const removeLanguage = (indexToRemove) => {
     const newLanguages = resumeData.languages.filter((_, index) => index !== indexToRemove);
     setResumeData({ ...resumeData, languages: newLanguages });
   };
 
-  // 处理回车键添加
+  // Handle Enter key to add
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -43,7 +43,7 @@ const Language = () => {
     <div className="flex-col-gap-2">
       <h2 className="input-title">Languages</h2>
       
-      {/* 语言标签展示区域 */}
+      {/* Languages tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">
         {resumeData.languages.map((language, index) => (
           <div
@@ -63,7 +63,7 @@ const Language = () => {
         ))}
       </div>
 
-      {/* 添加新语言输入框 */}
+      {/* Add new language input */}
       <div className="space-y-2">
         <p className="text-xs text-gray-500">
           Add languages you can speak, read, or write. You can optionally include proficiency level.

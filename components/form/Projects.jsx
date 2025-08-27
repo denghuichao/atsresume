@@ -45,7 +45,7 @@ const Projects = () => {
       <div className="space-y-4">
         {resumeData.projects.map((project, index) => (
           <div key={index} className="relative space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-          {/* 删除按钮 */}
+          {/* Delete button */}
           {resumeData.projects.length > 1 && (
             <button
               type="button"

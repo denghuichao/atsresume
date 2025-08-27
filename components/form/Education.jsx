@@ -38,7 +38,7 @@ const Education = () => {
         <div className="space-y-4">
           {resumeData.education.map((education, index) => (
             <div key={index} className="relative space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-              {/* 删除按钮 */}
+              {/* Delete button */}
               {resumeData.education.length > 1 && (
                 <button
                   type="button"

@@ -46,19 +46,19 @@ export default function Builder(props) {
     } else if (file) {
       console.error("Invalid file type");
     }
-    // 如果没有选择文件 (file 为 undefined)，什么都不做
+    // If no file is selected (file is undefined), do nothing
   };
 
   // remove profile picture
   const removeProfilePicture = () => {
-    // 清空 resumeData 中的头像数据
+    // Clear profile picture data from resumeData
     setResumeData({ 
       ...resumeData, 
       profilePicture: "",
       profilePictureName: ""
     });
     
-    // 清空文件输入框的值
+    // Clear the file input value
     const fileInput = document.querySelector('input[name="profileImage"]');
     if (fileInput) {
       fileInput.value = "";

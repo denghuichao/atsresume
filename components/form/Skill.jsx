@@ -6,7 +6,7 @@ const Skill = ({ title }) => {
   const { resumeData, setResumeData } = useContext(ResumeContext);
   const [newSkill, setNewSkill] = useState("");
 
-  // 不同技能类型的颜色配置
+  // Color configuration for different skill types
   const getSkillColor = (title) => {
     switch (title) {
       case "Technical Skills":
@@ -42,7 +42,7 @@ const Skill = ({ title }) => {
 
   const colors = getSkillColor(title);
 
-  // 添加技能
+  // Add skill
   const addSkill = () => {
     if (newSkill.trim()) {
       setResumeData((prevData) => {
@@ -57,7 +57,7 @@ const Skill = ({ title }) => {
     }
   };
 
-  // 删除技能
+  // Remove skill
   const removeSkill = (indexToRemove) => {
     setResumeData((prevData) => {
       const updatedSkills = prevData.skills.map((skill) =>
@@ -69,7 +69,7 @@ const Skill = ({ title }) => {
     });
   };
 
-  // 处理回车键添加
+  // Handle Enter key to add skill
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -85,7 +85,7 @@ const Skill = ({ title }) => {
     <div className="flex-col-gap-2">
       <h2 className="input-title">{title}</h2>
       
-      {/* 技能标签展示区域 */}
+      {/* Skills tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">
         {skillType.skills.map((skill, index) => (
           <div
@@ -105,7 +105,7 @@ const Skill = ({ title }) => {
         ))}
       </div>
 
-      {/* 添加新技能输入框 */}
+      {/* Add new skill input */}
       <div className="space-y-2">
         <p className="text-xs text-gray-500">
           {title === "Technical Skills" 

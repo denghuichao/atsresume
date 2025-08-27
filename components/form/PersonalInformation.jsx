@@ -7,7 +7,7 @@ const PersonalInformation = ({}) => {
   
   const fileInputRef = useRef(null);
 
-  // 包装删除函数，清空文件输入框
+  // Wrapper for remove function, clear file input
   const handleRemoveProfilePicture = () => {
     removeProfilePicture();
     if (fileInputRef.current) {
@@ -82,8 +82,8 @@ const PersonalInformation = ({}) => {
         <div className="flex flex-col">
           <label className="text-xs text-gray-600 mb-1">Profile Picture</label>
           
-          {/* 文件名标签显示区域 */}
-          {resumeData.profilePicture && resumeData.profilePictureName ? (
+          {/* Filename tag display area */}
+          {resumeData.profilePictureName && (
             <div className="mb-3">
               <div className="inline-flex items-center bg-blue-100 text-blue-800 px-3 py-2 rounded-lg border border-blue-200 relative">
                 <span className="text-sm font-medium mr-2">{resumeData.profilePictureName}</span>
@@ -97,9 +97,9 @@ const PersonalInformation = ({}) => {
                 </button>
               </div>
             </div>
-          ) : null}
+          )}
           
-          {/* 上传按钮 */}
+          {/* Upload button */}
           <input
             key={resumeData.profilePicture ? 'has-image' : 'no-image'}
             ref={fileInputRef}

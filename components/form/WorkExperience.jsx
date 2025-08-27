@@ -48,7 +48,7 @@ const WorkExperience = () => {
       <div className="space-y-4">
         {resumeData.workExperience.map((workExperience, index) => (
           <div key={index} className="relative space-y-3 p-4 bg-gray-50 rounded-lg border border-gray-200">
-          {/* 删除按钮 */}
+          {/* Delete button */}
           {resumeData.workExperience.length > 1 && (
             <button
               type="button"
