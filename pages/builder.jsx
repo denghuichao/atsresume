@@ -107,7 +107,7 @@ export default function Builder(props) {
           {!formClose && (
             <form className="p-6 bg-gray-50 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll border-r border-gray-200 space-y-6">
               <div className="mb-6">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">Resume Builder</h2>
+                <h1 className="text-2xl font-bold text-gray-900 mb-2">Resume Builder</h1>
                 <p className="text-gray-600">Create your professional ATS-friendly resume step by step</p>
               </div>
               

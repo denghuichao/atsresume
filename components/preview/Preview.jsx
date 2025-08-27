@@ -215,7 +215,7 @@ const Preview = () => {
                 />
               </div>
             )}
-            {resumeData.name && <h1 className="name">{resumeData.name}</h1>}
+            {resumeData.name && <h2 className="name">{resumeData.name}</h2>}
             {resumeData.position && <p className="profession">{resumeData.position}</p>}
             <ContactInfo
               mainclass="flex flex-row gap-1 mb-1 contact"
