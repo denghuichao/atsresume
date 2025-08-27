@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Script from "next/script";
 import Link from "next/link";
 
 const TermsOfService = () => {
@@ -9,8 +10,22 @@ const TermsOfService = () => {
         <title>Terms of Service - ATSResumeBuilder</title>
         <meta name="description" content="Terms of Service for ATSResumeBuilder - Free ATS-friendly resume builder" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://atsresume-sepia.vercel.app/terms-of-service" />
+        <link rel="canonical" href="https://atsresume.top/terms-of-service" />
       </Head>
+
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-0MX2THHK4Q"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0MX2THHK4Q');
+        `}
+      </Script>
 
       <div className="min-h-screen bg-gray-50">
         {/* Navigation */}
@@ -109,8 +124,8 @@ const TermsOfService = () => {
                 <h2 className="text-2xl font-bold text-gray-900 mb-4">9. Contact Information</h2>
                 <p className="text-gray-700 mb-4">
                   If you have any questions about these Terms of Service, please contact us at{" "}
-                  <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume-sepia.vercel.app"}`} className="text-blue-600 hover:underline">
-                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume-sepia.vercel.app"}
+                  <a href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume.top"}`} className="text-blue-600 hover:underline">
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume.top"}
                   </a>
                 </p>
               </section>

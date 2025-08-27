@@ -1,5 +1,5 @@
 # Robots.txt for ATSResume
-# https://atsresume-sepia.vercel.app
+# https://atsresume.top
 
 User-agent: *
 Allow: /
@@ -10,7 +10,7 @@ Disallow: /_next/
 Disallow: /admin/
 
 # Sitemap location
-Sitemap: https://atsresume-sepia.vercel.app/sitemap.xml
+Sitemap: https://atsresume.top/sitemap.xml
 
 # Crawl delay (optional, helps with server performance)
 Crawl-delay: 1

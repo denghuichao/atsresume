@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
+import Script from "next/script";
 import Link from "next/link";
 import Image from "next/image";
 import { 
@@ -18,7 +19,7 @@ import {
 } from "react-icons/fa";
 
 const LandingPage = () => {
-  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume-sepia.vercel.app";
+  const contactEmail = process.env.NEXT_PUBLIC_CONTACT_EMAIL || "contact@atsresume.top";
   const [openFAQ, setOpenFAQ] = useState(null);
 
   const toggleFAQ = (index) => {
@@ -107,7 +108,7 @@ const LandingPage = () => {
         <meta property="og:title" content="ATSResume - Free ATS Resume Builder" />
         <meta property="og:description" content="Create professional, ATS-optimized resumes in minutes. Cutting-edge builder with modern templates and real-time preview." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://atsresume-sepia.vercel.app" />
+        <meta property="og:url" content="https://atsresume.top" />
         <meta property="og:image" content="/assets/og-image.png" />
         
         {/* Twitter Card Meta Tags */}
@@ -117,7 +118,7 @@ const LandingPage = () => {
         <meta name="twitter:image" content="/assets/twitter-image.png" />
         
         {/* Canonical URL */}
-        <link rel="canonical" href="https://atsresume-sepia.vercel.app" />
+        <link rel="canonical" href="https://atsresume.top" />
         
         {/* Structured Data */}
         <script
@@ -128,7 +129,7 @@ const LandingPage = () => {
               "@type": "WebApplication",
               "name": "ATSResumeBuilder",
               "description": "Cutting-edge ATS-friendly resume builder with drag-and-drop interface for creating professional resumes",
-              "url": "https://atsresume-sepia.vercel.app",
+              "url": "https://atsresume.top",
               "applicationCategory": "BusinessApplication",
               "operatingSystem": "Web Browser",
               "offers": {
@@ -144,6 +145,20 @@ const LandingPage = () => {
           }}
         />
       </Head>
+
+      {/* Google Analytics */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-0MX2THHK4Q"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-0MX2THHK4Q');
+        `}
+      </Script>
 
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
         {/* Navigation */}

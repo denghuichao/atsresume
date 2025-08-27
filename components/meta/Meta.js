@@ -1,12 +1,12 @@
 import Head from "next/head";
 
 export default function Meta({ title, keywords, description, canonical }) {
-    const homepage = "https://atsresume-sepia.vercel.app/";
-    const logo = "https://atsresume-sepia.vercel.app/assets/logo.png";
-    const favicon = "/assets/favicon.ico";
+    const homepage = "https://atsresume.top/";
+    const logo = "https://atsresume.top/favicon.svg";
+    const favicon = "/favicon.svg";
     const faviconSvg = "/favicon.svg";
-    const favicon32 = "/favicon-32x32.png";
-    const favicon16 = "/favicon-16x16.png";
+    const favicon32 = "/favicon-32x32.svg";
+    const favicon16 = "/favicon-16x16.svg";
 
     function isiteJsonLd() {
         return {
@@ -24,10 +24,10 @@ export default function Meta({ title, keywords, description, canonical }) {
                 "description": ${description},
                 "founder": "InterviewPilot AI",
                 "foundingDate": "2023",
-                "foundingLocation": "IN",
+                "foundingLocation": "North America",
                 "email": "xyz@gmail.com",
                 "telephone": "+91 9999999999",
-                "areaServed": "IN",
+                "areaServed": "North America",
                 "keywords": ${keywords},
                 "mainEntityOfPage": ${homepage},
                 "knowsAbout": ${keywords},

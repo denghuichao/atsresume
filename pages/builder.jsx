@@ -1,4 +1,5 @@
 import React, { useState, createContext, useContext } from "react";
+import Script from "next/script";
 import Language from "../components/form/Language";
 import Meta from "../components/meta/Meta";
 import FormCP from "../components/form/FormCP";
@@ -85,8 +86,23 @@ export default function Builder(props) {
           title="Resume Builder - ATSResumeBuilder"
           description="Create ATS-friendly resumes with our cutting-edge builder. Drag-and-drop interface, real-time preview, and professional templates."
           keywords="ATS-friendly, Resume optimization, Keyword-rich resume, Applicant Tracking System, ATS resume builder, ATS resume templates, ATS-compliant resume, ATS-optimized CV, ATS-friendly format, ATS resume tips, Resume writing services, Career guidance, Job search in India, Resume tips for India, Professional resume builder, Cover letter writing, Interview preparation, Job interview tips, Career growth, Online job applications, resume builder, free resume builder, resume ats, best free resume builder, resume creator, resume cv, resume design, resume editor, resume maker"
-          canonical="https://atsresume-sepia.vercel.app/builder"
+          canonical="https://atsresume.top/builder"
         />
+        
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-0MX2THHK4Q"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0MX2THHK4Q');
+          `}
+        </Script>
+        
         <div className="f-col gap-4 md:flex-row justify-evenly max-w-7xl md:mx-auto md:h-screen">
           {!formClose && (
             <form className="p-6 bg-gray-50 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll border-r border-gray-200 space-y-6">
