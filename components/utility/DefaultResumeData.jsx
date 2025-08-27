@@ -29,7 +29,7 @@ const DefaultResumeData = {
       "school": "Bachelor of Computer Science",
       "degree": "New York University",
       "startYear": "2020-08-20",
-      "endYear": "2024-07-01"
+      "endYear": "2025-07-01"
     },
   ],
   workExperience: [

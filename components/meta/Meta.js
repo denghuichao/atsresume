@@ -1,8 +1,8 @@
 import Head from "next/head";
 
-export default function Meta({ title, keywords, description }) {
-    const homepage = "https://atsresume.top/";
-    const logo = "https://atsresume.top/assets/logo.png";
+export default function Meta({ title, keywords, description, canonical }) {
+    const homepage = "https://atsresume-sepia.vercel.app/";
+    const logo = "https://atsresume-sepia.vercel.app/assets/logo.png";
     const favicon = "/assets/favicon.ico";
     const faviconSvg = "/favicon.svg";
     const favicon32 = "/favicon-32x32.png";
@@ -57,8 +57,11 @@ export default function Meta({ title, keywords, description }) {
             <link rel="manifest" href="/site.webmanifest" />
             <meta name="theme-color" content="#3B82F6" />
             
+            {/* Canonical URL */}
+            {canonical && <link rel="canonical" href={canonical} />}
+            
             <title>{title}</title>
-            <meta type="copyright" content="ATSResume" />
+            <meta type="copyright" content="ATSResumeBuilder" />
             <meta type="author" content="InterviewPilot AI" />
             {/* Open Graph */}
             <meta property="og:type" content="website" />

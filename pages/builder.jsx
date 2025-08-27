@@ -82,47 +82,73 @@ export default function Builder(props) {
         }}
       >
         <Meta
-          title="ATSResume | Get hired with an ATS-optimized resume"
-          description="ATSResume is a cutting-edge resume builder that helps job seekers create a professional, ATS-friendly resume in minutes. Our platform uses the latest technology to analyze and optimize your resume for maximum visibility and success with applicant tracking systems. Say goodbye to frustration and wasted time spent on manual resume formatting. Create your winning resume with ATSResume today and get noticed by employers."
+          title="Resume Builder - ATSResumeBuilder"
+          description="Create ATS-friendly resumes with our cutting-edge builder. Drag-and-drop interface, real-time preview, and professional templates."
           keywords="ATS-friendly, Resume optimization, Keyword-rich resume, Applicant Tracking System, ATS resume builder, ATS resume templates, ATS-compliant resume, ATS-optimized CV, ATS-friendly format, ATS resume tips, Resume writing services, Career guidance, Job search in India, Resume tips for India, Professional resume builder, Cover letter writing, Interview preparation, Job interview tips, Career growth, Online job applications, resume builder, free resume builder, resume ats, best free resume builder, resume creator, resume cv, resume design, resume editor, resume maker"
+          canonical="https://atsresume-sepia.vercel.app/builder"
         />
         <div className="f-col gap-4 md:flex-row justify-evenly max-w-7xl md:mx-auto md:h-screen">
           {!formClose && (
             <form className="p-6 bg-gray-50 exclude-print md:max-w-[40%] md:h-screen md:overflow-y-scroll border-r border-gray-200 space-y-6">
+              <div className="mb-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Resume Builder</h2>
+                <p className="text-gray-600">Create your professional ATS-friendly resume step by step</p>
+              </div>
+              
               <div className="form-card">
                 <LoadUnload/>
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Personal Information</h3>
                 <PersonalInformation />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Social Media & Contact</h3>
                 <SocialMedia />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Professional Summary</h3>
                 <Summary />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Education</h3>
                 <Education />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Work Experience</h3>
                 <WorkExperience />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Projects</h3>
                 <Projects />
               </div>
-              {
-                resumeData.skills.map((skill, index) => (
-                  <div key={index} className="form-card">
-                    <Skill
-                      title={skill.title}
-                    />
-                  </div>
-                ))
-              }
+              
+              <div className="space-y-4">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Skills & Expertise</h3>
+                {
+                  resumeData.skills.map((skill, index) => (
+                    <div key={index} className="form-card">
+                      <Skill
+                        title={skill.title}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Languages</h3>
                 <Language />
               </div>
+              
               <div className="form-card">
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Certifications</h3>
                 <Certification />
               </div>
             </form>
