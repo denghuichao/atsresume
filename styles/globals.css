@@ -131,43 +131,6 @@
         padding: 0;
     }
 
-    /* 当模态框打开时，只打印模态框内容 */
-    .template-preview-modal-open > *:not(.fixed) {
-        display: none !important;
-    }
-    
-    .template-preview-modal-open .fixed {
-        position: static !important;
-        background: white !important;
-        transform: none !important;
-        max-width: none !important;
-        max-height: none !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
-        z-index: auto !important;
-    }
-    
-    /* 隐藏模态框的背景遮罩 */
-    .template-preview-modal-open .fixed > div:first-child {
-        display: none !important;
-    }
-    
-    /* 隐藏模态框的头部和底部控制区域 */
-    .template-preview-modal-open .fixed .border-b,
-    .template-preview-modal-open .fixed .border-t {
-        display: none !important;
-    }
-    
-    /* 确保模态框内的简历内容正常显示 */
-    .template-preview-modal-open .template-preview-modal {
-        transform: scale(1) !important;
-        max-width: none !important;
-        margin: 0 !important;
-        padding: 20px !important;
-    }
-
     @page {
         size: A4;
         /* 保留边距空间，但隐藏页眉页脚内容 */
