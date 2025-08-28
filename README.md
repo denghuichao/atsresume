@@ -7,13 +7,7 @@ A cutting-edge resume builder that helps job seekers create a professional, ATS-
 #### [https://atsresume.top/](https://atsresume.top/)
 ![image](https://user-images.githubusercontent.com/61316762/218017511-fbbaa7da-6154-449f-9e46-8de45b0e6c29.png)
 
-### Resume Score
-#### https://www.resumego.net/resume-checker/
-![image](https://user-images.githubusercontent.com/61316762/218143206-f0e5e764-52bc-4c25-84f2-6b2fff00cd4b.png)
 
-## Change Log
-
-- Drag and drop sections to reorder them in the resume(Work Experience, Projects, Skills)
 
 ## Sections
 
