@@ -41,7 +41,6 @@ const WorkExperience = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Work Experience</h2>
       <p className="text-xs text-gray-500 mb-4">
         List your work experience in reverse chronological order (most recent first). Focus on achievements and quantifiable results.
       </p>

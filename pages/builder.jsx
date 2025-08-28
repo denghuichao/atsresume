@@ -15,6 +15,7 @@ import Projects from "../components/form/Projects";
 import Education from "../components/form/Education";
 import dynamic from "next/dynamic";
 import Certification from "../components/form/certification";
+import TemplateSelector from "../components/templates/TemplateSelector";
 
 const ResumeContext = createContext(DefaultResumeData);
 
@@ -68,7 +69,7 @@ export default function Builder(props) {
 
   const handleChange = (e) => {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
-    console.log(resumeData);
+    // console.log(resumeData);
   };
 
   return (
@@ -114,6 +115,8 @@ export default function Builder(props) {
               <div className="form-card">
                 <LoadUnload/>
               </div>
+
+              <TemplateSelector />
               
               <div className="form-card">
                 <h3 className="text-lg font-semibold text-gray-800 mb-3">Personal Information</h3>
@@ -126,7 +129,7 @@ export default function Builder(props) {
               </div>
               
               <div className="form-card">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Professional Summary</h3>
+                <h3 className="text-lg font-semibold text-gray-800 mb-3">Summary</h3>
                 <Summary />
               </div>
               
@@ -146,7 +149,6 @@ export default function Builder(props) {
               </div>
               
               <div className="space-y-4">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">Skills & Expertise</h3>
                 {
                   resumeData.skills.map((skill, index) => (
                     <div key={index} className="form-card">

@@ -6,6 +6,7 @@ const DefaultResumeData = {
   address: "San Francisco, CA",
   profilePicture: "",
   profilePictureName: "",
+  selectedTemplate: "classic",
   socialMedia: [
     {
       socialMedia: "Github",

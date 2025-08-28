@@ -38,7 +38,6 @@ const Projects = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Projects</h2>
       <p className="text-xs text-gray-500 mb-4">
         Showcase your personal projects, side projects, or significant work projects. Focus on technical achievements and measurable impact.
       </p>

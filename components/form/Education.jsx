@@ -31,7 +31,6 @@ const Education = () => {
     
     return (
       <div className="flex-col-gap-2">
-        <h2 className="input-title">Education</h2>
         <p className="text-xs text-gray-500 mb-4">
           Add your educational background, starting with the most recent. Include degrees, certifications, and relevant coursework.
         </p>

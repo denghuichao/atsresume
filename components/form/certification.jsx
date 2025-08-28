@@ -41,7 +41,6 @@ const Certification = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Certifications</h2>
       
       {/* Certifications tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">

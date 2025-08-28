@@ -17,7 +17,6 @@ const PersonalInformation = ({}) => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Personal Information</h2>
       <div className="grid-4">
         <div className="flex flex-col">
           <label className="text-xs text-gray-600 mb-1">Full Name *</label>

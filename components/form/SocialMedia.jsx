@@ -77,7 +77,6 @@ const SocialMedia = () => {
 
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Social Media</h2>
       
       {/* Social media tags display area */}
       <div className="flex flex-wrap gap-2 mb-4">

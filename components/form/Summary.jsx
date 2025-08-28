@@ -4,7 +4,6 @@ const Summary = () => {
   const { resumeData, setResumeData, handleChange } = useContext(ResumeContext);
   return (
     <div className="flex-col-gap-2">
-      <h2 className="input-title">Summary</h2>
       <div className="space-y-3">
         <div className="flex flex-col">
           <p className="text-xs text-gray-500 mb-2">

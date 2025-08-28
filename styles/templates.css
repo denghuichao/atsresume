@@ -1,0 +1,186 @@
+/* Template Theme Variables */
+:root {
+  /* Classic Theme */
+  --classic-primary: #2563eb;
+  --classic-secondary: #64748b;
+  --classic-accent: #f1f5f9;
+  --classic-text: #1e293b;
+  --classic-border: #e2e8f0;
+  --classic-bg: #ffffff;
+  
+  /* Modern Theme */
+  --modern-primary: #059669;
+  --modern-secondary: #6b7280;
+  --modern-accent: #f0fdf4;
+  --modern-text: #111827;
+  --modern-border: #d1d5db;
+  --modern-bg: #ffffff;
+  
+  /* Creative Theme */
+  --creative-primary: #7c3aed;
+  --creative-secondary: #64748b;
+  --creative-accent: #faf5ff;
+  --creative-text: #1e293b;
+  --creative-border: #e879f9;
+  --creative-bg: #ffffff;
+}
+
+/* Template-specific classes */
+.template-classic {
+  --current-primary: var(--classic-primary);
+  --current-secondary: var(--classic-secondary);
+  --current-accent: var(--classic-accent);
+  --current-text: var(--classic-text);
+  --current-border: var(--classic-border);
+  --current-bg: var(--classic-bg);
+}
+
+.template-modern {
+  --current-primary: var(--modern-primary);
+  --current-secondary: var(--modern-secondary);
+  --current-accent: var(--modern-accent);
+  --current-text: var(--modern-text);
+  --current-border: var(--modern-border);
+  --current-bg: var(--modern-bg);
+}
+
+.template-creative {
+  --current-primary: var(--creative-primary);
+  --current-secondary: var(--creative-secondary);
+  --current-accent: var(--creative-accent);
+  --current-text: var(--creative-text);
+  --current-border: var(--creative-border);
+  --current-bg: var(--creative-bg);
+}
+
+/* Enhanced typography classes for templates */
+.template-name {
+  color: var(--current-primary);
+  font-weight: 700;
+  transition: color 0.3s ease;
+}
+
+.template-profession {
+  color: var(--current-secondary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.template-section-title {
+  color: var(--current-primary);
+  font-weight: 700;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.template-content {
+  color: var(--current-text);
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.template-sub-content {
+  color: var(--current-text);
+  font-weight: 400;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+.template-link {
+  color: var(--current-primary);
+  transition: color 0.3s ease;
+}
+
+.template-border {
+  border-color: var(--current-border);
+  transition: border-color 0.3s ease;
+}
+
+/* Layout-specific enhancements */
+.classic-layout {
+  background: var(--current-bg);
+}
+
+.classic-section-title {
+  border-bottom: 2px solid var(--current-border);
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.125rem;
+}
+
+.modern-section-title {
+  border-left: 4px solid var(--current-primary);
+  padding-left: 0.75rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--current-accent) 0%, transparent 100%);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+.creative-section-title {
+  background: var(--current-accent);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Animation classes */
+.template-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.template-fade-in {
+  animation: templateFadeIn 0.5s ease-in-out;
+}
+
+@keyframes templateFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced drag and drop styling */
+.template-dragging {
+  outline: 2px dashed var(--current-border);
+  outline-offset: 2px;
+  background: var(--current-accent);
+  transform: rotate(1deg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.template-drop-zone {
+  border: 2px dashed var(--current-border);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background: var(--current-accent);
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.template-drop-zone:hover {
+  opacity: 1;
+  border-color: var(--current-primary);
+}
+
+/* Print optimizations for all templates */
+@media print {
+  /* Keep original colors but ensure they're printable */
+  .template-classic,
+  .template-modern,
+  .template-creative,
+  .template-minimalist,
+  .template-executive {
+    /* Ensure colors are preserved during printing */
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .template-transition,
+  .template-fade-in {
+    animation: none;
+    transition: none;
+  }
+}
